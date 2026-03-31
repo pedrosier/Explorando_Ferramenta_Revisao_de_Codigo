@@ -11,9 +11,13 @@ struct Tcarro
   char cor[30];
 };
 
-// Funções
-int fun_decre(int *fila);
-int fun_incre(int *fila);
+
+void decrementa_fila(int *fila);
+void incrementa_fila(int *fila);
+
+
+
+
 void flush_in();
 float calcValor(float preco, float qtd);
 int fun_invalidos(float prEta, float prGas, float prAdit, float tFila);
@@ -70,8 +74,9 @@ int main(void)
       system("clear");
       if (fila <= tFila)
       {
-        fun_incre(&fila);
+        incrementa_fila(&fila);
         flush_in();
+        
 
         printf("\nDigite o modelo do carro:\n ");
         fgets(carros[cont].modelo, 30, stdin);
@@ -113,7 +118,7 @@ int main(void)
         cAtendido = cAtendido + 1;
         printf("\nCarros atendidos: %.f\n", cAtendido);
         printf("Carro abastecido\n");
-        fun_decre(&fila);
+       decrementa_fila(&fila);
       }
       else
       {
@@ -223,16 +228,14 @@ void flush_in()
   }
 }
 
-int fun_incre(int *fila)
+void incrementa_fila(int *fila)
 {
   *fila = *fila + 1;
   printf("Número de carros na fila: %d\n", *fila);
-  return *fila;
 }
 
-int fun_decre(int *fila)
+void decrementa_fila(int *fila)
 {
   *fila = *fila - 1;
   printf("Número de carros na fila: %d\n", *fila);
-  return *fila;
 }
